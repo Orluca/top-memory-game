@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ScoreDisplay = styled.div`
+const ScoreStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,6 +9,10 @@ const ScoreDisplay = styled.div`
   font-size: 2rem;
   padding: 0.5rem 1rem;
   border-radius: 5px;
+
+  .score-label {
+    font-weight: 800;
+  }
 `;
 
-export default ScoreDisplay;
+export default ScoreStyled;

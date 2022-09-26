@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 
 function Gameboard(props) {
   const [cards, setCards] = useState([]);
+  const [ids, setIds] = useState([]);
 
   function createRandomNumber() {
     return Math.floor(Math.random() * 826) + 1;
@@ -17,10 +18,32 @@ function Gameboard(props) {
     return numbers;
   }
 
-  useEffect(() => {
-    const randomCards = randomNumbers(props.cardAmount).map((id) => <MemoryCard id={id} key={uuidv4()} />);
+  function shuffleArray(array) {
+    // Fisher-Yates shuffle algorithm
+    let j, x, i;
+    for (i = array.length - 1; i > 0; i--) {
+      j = Math.floor(Math.random() * (i + 1));
+      x = array[i];
+      array[i] = array[j];
+      array[j] = x;
+    }
+    return array;
+  }
+
+  function handleCardClick() {
+    console.log("CARD CLICK");
+  }
+
+  function createCards() {
+    console.log(ids);
+    const randomCards = ids.map((id) => <MemoryCard id={id} key={uuidv4()} onClick={handleCardClick} />);
 
     setCards(randomCards);
+  }
+
+  useEffect(() => {
+    setIds(randomNumbers(props.cardAmount));
+    createCards();
   }, [props.cardAmount]);
 
   return <GameboardStyled>{cards}</GameboardStyled>;

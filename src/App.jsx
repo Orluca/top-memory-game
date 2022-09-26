@@ -5,7 +5,7 @@ import Gameboard from "./components/Gameboard/Gameboard";
 import React, { useState } from "react";
 
 function App() {
-  const [cardAmount, setCardAmount] = useState(4);
+  const [cardAmount, setCardAmount] = useState(8);
   const [score, setScore] = useState(0);
   const [highscore, setHighscore] = useState(0);
 
@@ -16,8 +16,6 @@ function App() {
   function handleGameOver() {
     setScore((prevScore) => {
       setHighscore((prevHighscore) => {
-        console.log(prevScore);
-        console.log(prevHighscore);
         if (prevScore > prevHighscore) return prevScore;
         else return prevHighscore;
       });

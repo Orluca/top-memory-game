@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 
 function Gameboard() {
   const [cards, setCards] = useState([]);
+  const [cardAmount, setCardAmount] = useState(4);
 
   function createRandomNumber() {
     return Math.floor(Math.random() * 826) + 1;
@@ -18,7 +19,7 @@ function Gameboard() {
   }
 
   useEffect(() => {
-    const randomCards = randomNumbers(4).map((id) => <MemoryCard id={id} key={uuidv4()} />);
+    const randomCards = randomNumbers(cardAmount).map((id) => <MemoryCard id={id} key={uuidv4()} />);
 
     setCards(randomCards);
   }, []);

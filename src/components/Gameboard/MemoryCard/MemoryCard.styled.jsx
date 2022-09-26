@@ -9,6 +9,7 @@ const MemoryCardStyled = styled.div`
   padding: 1rem;
   border-radius: 10px;
   border: 1px solid transparent;
+  height: 100%;
 
   &:hover {
     border: 1px solid white;
@@ -21,6 +22,10 @@ const MemoryCardStyled = styled.div`
 
   .picture-label {
     text-align: center;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 

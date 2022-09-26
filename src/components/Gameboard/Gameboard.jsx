@@ -18,35 +18,41 @@ function Gameboard(props) {
     return numbers;
   }
 
-  function shuffleArray(array) {
-    // Fisher-Yates shuffle algorithm
-    let j, x, i;
-    for (i = array.length - 1; i > 0; i--) {
-      j = Math.floor(Math.random() * (i + 1));
-      x = array[i];
-      array[i] = array[j];
-      array[j] = x;
-    }
-    return array;
-  }
+  //   function shuffleArray(array) {
+  //     // Fisher-Yates shuffle algorithm
+  //     let j, x, i;
+  //     for (i = array.length - 1; i > 0; i--) {
+  //       j = Math.floor(Math.random() * (i + 1));
+  //       x = array[i];
+  //       array[i] = array[j];
+  //       array[j] = x;
+  //     }
+  //     return array;
+  //   }
 
-  function handleCardClick() {
-    console.log("CARD CLICK");
-  }
+  //   function handleCardClick() {
+  //     console.log("CARD CLICK");
+  //   }
 
-  function createCards() {
-    console.log(ids);
-    const randomCards = ids.map((id) => <MemoryCard id={id} key={uuidv4()} onClick={handleCardClick} />);
+  //   function createCards() {
+  //     console.log(ids);
+  //     const randomCards = ids.map((id) => <MemoryCard id={id} key={uuidv4()} onClick={handleCardClick} />);
 
-    setCards(randomCards);
-  }
+  //     setCards(randomCards);
+  //   }
 
-  useEffect(() => {
-    setIds(randomNumbers(props.cardAmount));
-    createCards();
-  }, [props.cardAmount]);
+  //   useEffect(() => {
+  //     setIds(randomNumbers(props.cardAmount));
+  //     createCards();
+  //   }, [props.cardAmount]);
 
-  return <GameboardStyled>{cards}</GameboardStyled>;
+  return (
+    <GameboardStyled>
+      {/* {cards} */}
+      <MemoryCard id="2" />
+      <MemoryCard id="7" />
+    </GameboardStyled>
+  );
 }
 
 export default Gameboard;

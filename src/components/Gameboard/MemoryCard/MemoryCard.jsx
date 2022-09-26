@@ -19,7 +19,7 @@ function MemoryCard(props) {
     }
 
     setData(props.id);
-  });
+  }, []);
 
   function handleClick() {
     if (hasBeenClicked) {
@@ -28,7 +28,7 @@ function MemoryCard(props) {
       console.log("CORRECT!");
       setHasBeenClicked(true);
     }
-    props.onClick();
+    // props.onClick();
   }
 
   return (

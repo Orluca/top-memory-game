@@ -19,7 +19,6 @@ function Gameboard(props) {
   }
 
   function shuffleArray(array) {
-    // Fisher-Yates shuffle algorithm
     let j, x, i;
     for (i = array.length - 1; i > 0; i--) {
       j = Math.floor(Math.random() * (i + 1));
@@ -31,11 +30,10 @@ function Gameboard(props) {
   }
 
   function handleCardClick() {
-    setIds((prev) => [...shuffleArray(prev)]);
+    setCards((prev) => [...shuffleArray(prev)]);
   }
 
   function createCards() {
-    console.log(ids);
     const randomCards = ids.map((id) => <MemoryCard id={id} key={uuidv4()} onClick={handleCardClick} />);
 
     setCards(randomCards);

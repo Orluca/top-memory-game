@@ -23,7 +23,7 @@ function MemoryCard(props) {
   return (
     <MemoryCardStyled>
       <img src={picture} alt={"A picture of " + { name }} />
-      <div>{name ? name : "..."}</div>
+      <div className="picture-label">{name ? name : "..."}</div>
     </MemoryCardStyled>
   );
 }

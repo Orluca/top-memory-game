@@ -3,6 +3,7 @@ import Header from "./components/Header/Header";
 import Test from "./components/Test";
 import GlobalStyles from "./components/General/GlobalStyle";
 import CurrentScore from "./components/CurrentScore/CurrentScore";
+import BestScore from "./components/BestScore/BestScore";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Header />
       {/* <Test /> */}
       <CurrentScore />
+      <BestScore />
     </div>
   );
 }

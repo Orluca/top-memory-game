@@ -27,6 +27,7 @@ function MemoryCard(props) {
     } else {
       console.log("CORRECT!");
       setHasBeenClicked(true);
+      props.onCorrect();
       props.onClick();
     }
   }

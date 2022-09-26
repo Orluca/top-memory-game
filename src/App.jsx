@@ -12,11 +12,15 @@ function App() {
     setCardAmount(8);
   }
 
+  function handleCorrectClick() {
+    setScore((prev) => prev + 1);
+  }
+
   return (
     <div className="App">
       <Header />
       <Scoreboard score={score} />
-      <Gameboard cardAmount={cardAmount} />
+      <Gameboard cardAmount={cardAmount} onCorrect={handleCorrectClick} />
       <button onClick={handleClick}>More cards</button>
     </div>
   );

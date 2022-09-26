@@ -33,8 +33,12 @@ function Gameboard(props) {
     setCards((prev) => [...shuffleArray(prev)]);
   }
 
+  function handleCorrectClick() {
+    props.onCorrect();
+  }
+
   function createCards() {
-    const randomCards = ids.map((id) => <MemoryCard id={id} key={uuidv4()} onClick={handleCardClick} />);
+    const randomCards = ids.map((id) => <MemoryCard id={id} key={uuidv4()} onClick={handleCardClick} onCorrect={handleCorrectClick} />);
 
     setCards(randomCards);
   }

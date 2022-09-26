@@ -18,20 +18,20 @@ function Gameboard(props) {
     return numbers;
   }
 
-  //   function shuffleArray(array) {
-  //     // Fisher-Yates shuffle algorithm
-  //     let j, x, i;
-  //     for (i = array.length - 1; i > 0; i--) {
-  //       j = Math.floor(Math.random() * (i + 1));
-  //       x = array[i];
-  //       array[i] = array[j];
-  //       array[j] = x;
-  //     }
-  //     return array;
-  //   }
+  function shuffleArray(array) {
+    // Fisher-Yates shuffle algorithm
+    let j, x, i;
+    for (i = array.length - 1; i > 0; i--) {
+      j = Math.floor(Math.random() * (i + 1));
+      x = array[i];
+      array[i] = array[j];
+      array[j] = x;
+    }
+    return array;
+  }
 
   function handleCardClick() {
-    console.log("CARD CLICK");
+    setIds((prev) => [...shuffleArray(prev)]);
   }
 
   function createCards() {

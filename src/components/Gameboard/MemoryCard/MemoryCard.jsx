@@ -23,9 +23,8 @@ function MemoryCard(props) {
 
   function handleClick() {
     if (hasBeenClicked) {
-      console.log("GAME OVER");
+      props.onGameOver();
     } else {
-      console.log("CORRECT!");
       setHasBeenClicked(true);
       props.onCorrect();
       props.onClick();

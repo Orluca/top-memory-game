@@ -9,20 +9,27 @@ function App() {
   const [score, setScore] = useState(0);
   const [highscore, setHighscore] = useState(0);
 
-  function handleClick() {
-    setCardAmount(8);
-  }
-
   function handleCorrectClick() {
     setScore((prev) => prev + 1);
+  }
+
+  function handleGameOver() {
+    setScore((prevScore) => {
+      setHighscore((prevHighscore) => {
+        console.log(prevScore);
+        console.log(prevHighscore);
+        if (prevScore > prevHighscore) return prevScore;
+        else return prevHighscore;
+      });
+      return 0;
+    });
   }
 
   return (
     <div className="App">
       <Header />
       <Scoreboard score={score} highscore={highscore} />
-      <Gameboard cardAmount={cardAmount} onCorrect={handleCorrectClick} />
-      <button onClick={handleClick}>More cards</button>
+      <Gameboard cardAmount={cardAmount} onCorrect={handleCorrectClick} onGameOver={handleGameOver} />
     </div>
   );
 }

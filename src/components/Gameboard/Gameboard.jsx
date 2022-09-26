@@ -37,8 +37,12 @@ function Gameboard(props) {
     props.onCorrect();
   }
 
+  function handleGameOver() {
+    props.onGameOver();
+  }
+
   function createCards() {
-    const randomCards = ids.map((id) => <MemoryCard id={id} key={uuidv4()} onClick={handleCardClick} onCorrect={handleCorrectClick} />);
+    const randomCards = ids.map((id) => <MemoryCard id={id} key={uuidv4()} onClick={handleCardClick} onCorrect={handleCorrectClick} onGameOver={handleGameOver} />);
 
     setCards(randomCards);
   }

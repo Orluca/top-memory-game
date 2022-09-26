@@ -6,7 +6,7 @@ function Scoreboard(props) {
   return (
     <ScoreboardStyled>
       <Score name="Score" value={props.score} />
-      <Score name="Best" value="10" />
+      <Score name="Best" value={props.highscore} />
     </ScoreboardStyled>
   );
 }

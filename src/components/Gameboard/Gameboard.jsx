@@ -8,6 +8,9 @@ function Gameboard() {
       <MemoryCard id="1" />
       <MemoryCard id="11" />
       <MemoryCard id="111" />
+      <MemoryCard id="54" />
+      <MemoryCard id="58" />
+      <MemoryCard id="98" />
     </GameboardStyled>
   );
 }

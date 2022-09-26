@@ -3,26 +3,25 @@ import GameboardStyled from "./Gameboard.styled";
 import MemoryCard from "./MemoryCard/MemoryCard";
 import { v4 as uuidv4 } from "uuid";
 
-function Gameboard() {
+function Gameboard(props) {
   const [cards, setCards] = useState([]);
-  const [cardAmount, setCardAmount] = useState(4);
 
   function createRandomNumber() {
     return Math.floor(Math.random() * 826) + 1;
   }
 
   function randomNumbers(amount) {
-    const emptyArray = new Array(amount).fill(NaN);
-    const numbers = emptyArray.map((el) => createRandomNumber());
-    console.log(numbers);
+    const amountNumber = Number(amount);
+    const emptyArray = new Array(amountNumber).fill(NaN);
+    const numbers = emptyArray.map((_el) => createRandomNumber());
     return numbers;
   }
 
   useEffect(() => {
-    const randomCards = randomNumbers(cardAmount).map((id) => <MemoryCard id={id} key={uuidv4()} />);
+    const randomCards = randomNumbers(props.cardAmount).map((id) => <MemoryCard id={id} key={uuidv4()} />);
 
     setCards(randomCards);
-  }, []);
+  }, [props.cardAmount]);
 
   return <GameboardStyled>{cards}</GameboardStyled>;
 }

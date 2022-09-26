@@ -4,6 +4,7 @@ import MemoryCardStyled from "./MemoryCard.styled";
 function MemoryCard(props) {
   const [name, setName] = useState("");
   const [picture, setPicture] = useState("");
+  const [hasBeenClicked, setHasBeenClicked] = useState(false);
 
   useEffect(() => {
     async function fetchData(id) {
@@ -20,8 +21,13 @@ function MemoryCard(props) {
     setData(props.id);
   });
 
+  function handleClick() {
+    console.log(hasBeenClicked);
+    setHasBeenClicked(true);
+  }
+
   return (
-    <MemoryCardStyled>
+    <MemoryCardStyled onClick={handleClick}>
       <img src={picture} alt={"A picture of " + { name }} />
       <div className="picture-label">{name ? name : "..."}</div>
     </MemoryCardStyled>

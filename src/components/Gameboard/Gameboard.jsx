@@ -30,29 +30,26 @@ function Gameboard(props) {
   //     return array;
   //   }
 
-  //   function handleCardClick() {
-  //     console.log("CARD CLICK");
-  //   }
+  function handleCardClick() {
+    console.log("CARD CLICK");
+  }
 
-  //   function createCards() {
-  //     console.log(ids);
-  //     const randomCards = ids.map((id) => <MemoryCard id={id} key={uuidv4()} onClick={handleCardClick} />);
+  function createCards() {
+    console.log(ids);
+    const randomCards = ids.map((id) => <MemoryCard id={id} key={uuidv4()} onClick={handleCardClick} />);
 
-  //     setCards(randomCards);
-  //   }
+    setCards(randomCards);
+  }
 
-  //   useEffect(() => {
-  //     setIds(randomNumbers(props.cardAmount));
-  //     createCards();
-  //   }, [props.cardAmount]);
+  useEffect(() => {
+    setIds(randomNumbers(props.cardAmount));
+  }, [props.cardAmount]);
 
-  return (
-    <GameboardStyled>
-      {/* {cards} */}
-      <MemoryCard id="2" />
-      <MemoryCard id="7" />
-    </GameboardStyled>
-  );
+  useEffect(() => {
+    createCards();
+  }, [ids]);
+
+  return <GameboardStyled>{cards}</GameboardStyled>;
 }
 
 export default Gameboard;

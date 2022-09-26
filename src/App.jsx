@@ -1,7 +1,8 @@
 import "./App.css";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import Test from "./components/Test";
-import GlobalStyles from "./components/styles/GlobalStyle";
+import GlobalStyles from "./components/General/GlobalStyle";
+import CurrentScore from "./components/CurrentScore/CurrentScore";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <GlobalStyles />
       <Header />
       {/* <Test /> */}
+      <CurrentScore />
     </div>
   );
 }

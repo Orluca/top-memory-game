@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 function Test() {
   const [name, setName] = useState("");
+  const [picture, setPicture] = useState("");
 
   useEffect(() => {
     async function fetchData(id) {
@@ -14,10 +15,20 @@ function Test() {
       await fetchData(id).then((data) => setName(data.name));
     }
 
-    getName(5);
+    async function getPicture(id) {
+      await fetchData(id).then((data) => setPicture(data.image));
+    }
+
+    getName(1);
+    getPicture(1);
   });
 
-  return <div>My name is {name ? name : "..."}</div>;
+  return (
+    <div>
+      <img src={picture} alt={"A picture of " + { name }} />
+      <div>My name is {name ? name : "..."}</div>
+    </div>
+  );
 }
 
 export default Test;

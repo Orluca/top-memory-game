@@ -55,6 +55,13 @@ function Gameboard(props) {
     createCards();
   }, [ids]);
 
+  useEffect(() => {
+    cards.every((card) => {
+      // console.log(card);
+      return true;
+    });
+  });
+
   return <GameboardStyled>{cards}</GameboardStyled>;
 }
 

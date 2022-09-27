@@ -5,7 +5,7 @@ import Gameboard from "./components/Gameboard/Gameboard";
 import React, { useState } from "react";
 
 function App() {
-  const [cardAmount, setCardAmount] = useState(8);
+  const [cardAmount, setCardAmount] = useState(4);
   const [score, setScore] = useState(0);
   const [highscore, setHighscore] = useState(0);
 

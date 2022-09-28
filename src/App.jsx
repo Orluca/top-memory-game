@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Scoreboard from "./components/Scoreboard/Scoreboard";
 import Gameboard from "./components/Gameboard/Gameboard";
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 
 function App() {
   const [cardAmount, setCardAmount] = useState(4);
@@ -14,8 +14,11 @@ function App() {
   }
 
   function handleGameOver() {
-    console.log("GAMEOVER");
     if (score > highscore) setHighscore(score);
+    resetGame();
+  }
+
+  function resetGame() {
     setScore(0);
     setCardAmount(4);
   }

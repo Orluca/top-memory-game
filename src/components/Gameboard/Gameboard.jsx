@@ -41,8 +41,14 @@ function Gameboard(props) {
   function handleCardClick(id) {
     setCharacters((prev) => {
       const index = prev.findIndex((char) => char.id === id);
-      prev[index].clicked = true;
-      return [...prev];
+
+      if (prev[index].clicked === true) {
+        console.log("GAME OVER");
+        return prev;
+      } else {
+        prev[index].clicked = true;
+        return [...prev];
+      }
     });
   }
 

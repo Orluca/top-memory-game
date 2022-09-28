@@ -48,7 +48,7 @@ function Gameboard(props) {
     const clickedCharacter = characters[index];
 
     if (clickedCharacter.clicked === true) {
-      console.log("GAME OVER");
+      props.onGameover();
       return;
     } else {
       setCharacters((prev) => {
@@ -69,7 +69,6 @@ function Gameboard(props) {
     setCardComponents(components);
 
     if (checkIfAllClicked()) {
-      console.log("ALL CORRECTLY CLICKED");
       props.onRoundWon();
     }
   }, [characters]);

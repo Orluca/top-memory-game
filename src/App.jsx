@@ -13,18 +13,14 @@ function App() {
     setScore((prev) => prev + 1);
   }
 
-  // function handleGameOver() {
-  //   setScore((prevScore) => {
-  //     setHighscore((prevHighscore) => {
-  //       if (prevScore > prevHighscore) return prevScore;
-  //       else return prevHighscore;
-  //     });
-  //     return 0;
-  //   });
-  // }
+  function handleGameOver() {
+    console.log("GAMEOVER");
+    if (score > highscore) setHighscore(score);
+    setScore(0);
+    setCardAmount(4);
+  }
 
   function handleRoundWon() {
-    console.log("YAY");
     setCardAmount((prev) => prev + 4);
   }
 
@@ -32,7 +28,7 @@ function App() {
     <div className="App">
       <Header />
       <Scoreboard score={score} highscore={highscore} />
-      <Gameboard cardAmount={cardAmount} onRoundWon={handleRoundWon} onCorrect={handleCorrectClick} />
+      <Gameboard cardAmount={cardAmount} onRoundWon={handleRoundWon} onCorrect={handleCorrectClick} onGameover={handleGameOver} />
     </div>
   );
 }

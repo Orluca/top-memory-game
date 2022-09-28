@@ -44,17 +44,18 @@ function Gameboard(props) {
   }
 
   function handleCardClick(id) {
-    setCharacters((prev) => {
-      const index = prev.findIndex((char) => char.id === id);
+    const index = characters.findIndex((char) => char.id === id);
+    const clickedCharacter = characters[index];
 
-      if (prev[index].clicked === true) {
-        console.log("GAME OVER");
-        return prev;
-      } else {
+    if (clickedCharacter.clicked === true) {
+      console.log("GAME OVER");
+      return;
+    } else {
+      setCharacters((prev) => {
         prev[index].clicked = true;
         return [...prev];
-      }
-    });
+      });
+    }
   }
 
   useEffect(() => {
@@ -63,9 +64,9 @@ function Gameboard(props) {
   }, [props.cardAmount]);
 
   useEffect(() => {
-    console.log(characters);
     const components = characters.map((data) => <MemoryCard name={data.name} image={data.image} id={data.id} key={data.id} onClick={handleCardClick} />);
     setCardComponents(components);
+
     if (checkIfAllClicked()) {
       console.log("ALL CORRECTLY CLICKED");
       props.onRoundWon();

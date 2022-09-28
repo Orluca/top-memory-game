@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import MemoryCardStyled from "./MemoryCard.styled";
 
 function MemoryCard(props) {
-  const [id, setId] = useState(props.id);
+  const [id, _setId] = useState(props.id);
 
   function handleClick() {
     props.onClick(id);

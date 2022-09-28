@@ -9,9 +9,9 @@ function App() {
   const [score, setScore] = useState(0);
   const [highscore, setHighscore] = useState(0);
 
-  // function handleCorrectClick() {
-  //   setScore((prev) => prev + 1);
-  // }
+  function handleCorrectClick() {
+    setScore((prev) => prev + 1);
+  }
 
   // function handleGameOver() {
   //   setScore((prevScore) => {
@@ -32,7 +32,7 @@ function App() {
     <div className="App">
       <Header />
       <Scoreboard score={score} highscore={highscore} />
-      <Gameboard cardAmount={cardAmount} onRoundWon={handleRoundWon} />
+      <Gameboard cardAmount={cardAmount} onRoundWon={handleRoundWon} onCorrect={handleCorrectClick} />
     </div>
   );
 }

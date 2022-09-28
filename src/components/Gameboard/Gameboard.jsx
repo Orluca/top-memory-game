@@ -55,6 +55,7 @@ function Gameboard(props) {
         prev[index].clicked = true;
         return [...prev];
       });
+      props.onCorrect();
     }
   }
 

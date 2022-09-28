@@ -38,6 +38,11 @@ function Gameboard(props) {
     randomIds.forEach((id) => createCharacter(id));
   }
 
+  function checkIfAllClicked() {
+    if (characters.length === 0) return;
+    return characters.every((char) => char.clicked === true);
+  }
+
   function handleCardClick(id) {
     setCharacters((prev) => {
       const index = prev.findIndex((char) => char.id === id);
@@ -61,11 +66,11 @@ function Gameboard(props) {
     console.log(characters);
     const components = characters.map((data) => <MemoryCard name={data.name} image={data.image} id={data.id} key={data.id} onClick={handleCardClick} />);
     setCardComponents(components);
+    if (checkIfAllClicked()) {
+      console.log("ALL CORRECTLY CLICKED");
+      props.onRoundWon();
+    }
   }, [characters]);
-
-  // function handleClick() {
-  //   console.log(characters);
-  // }
 
   return <GameboardStyled>{cardComponents}</GameboardStyled>;
 }

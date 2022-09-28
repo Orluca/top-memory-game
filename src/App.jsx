@@ -9,30 +9,30 @@ function App() {
   const [score, setScore] = useState(0);
   const [highscore, setHighscore] = useState(0);
 
-  function handleCorrectClick() {
-    setScore((prev) => prev + 1);
-  }
+  // function handleCorrectClick() {
+  //   setScore((prev) => prev + 1);
+  // }
 
-  function handleGameOver() {
-    setScore((prevScore) => {
-      setHighscore((prevHighscore) => {
-        if (prevScore > prevHighscore) return prevScore;
-        else return prevHighscore;
-      });
-      return 0;
-    });
-  }
+  // function handleGameOver() {
+  //   setScore((prevScore) => {
+  //     setHighscore((prevHighscore) => {
+  //       if (prevScore > prevHighscore) return prevScore;
+  //       else return prevHighscore;
+  //     });
+  //     return 0;
+  //   });
+  // }
 
-  function handleClick() {
-    setCardAmount(8);
+  function handleRoundWon() {
+    console.log("YAY");
+    setCardAmount((prev) => prev + 4);
   }
 
   return (
     <div className="App">
       <Header />
       <Scoreboard score={score} highscore={highscore} />
-      <Gameboard cardAmount={cardAmount} onCorrect={handleCorrectClick} onGameOver={handleGameOver} />
-      <button onClick={handleClick}>more</button>
+      <Gameboard cardAmount={cardAmount} onRoundWon={handleRoundWon} />
     </div>
   );
 }

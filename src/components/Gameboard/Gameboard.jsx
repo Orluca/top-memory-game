@@ -12,8 +12,14 @@ function Gameboard(props) {
 
   function randomNumbers(amount) {
     const amountNumber = Number(amount);
-    const emptyArray = new Array(amountNumber).fill(NaN);
-    const numbers = emptyArray.map((_el) => createRandomNumber());
+    const numbers = [];
+
+    for (let i = 0; i < amountNumber; i++) {
+      const randomNumber = createRandomNumber();
+      if (numbers.includes(randomNumber)) i = i - 1;
+      else numbers.push(randomNumber);
+    }
+
     return numbers;
   }
 

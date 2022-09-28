@@ -8,8 +8,9 @@ function App() {
   const [cardAmount, setCardAmount] = useState(4);
   const [score, setScore] = useState(0);
   const [highscore, setHighscore] = useState(0);
-  const [totalGames, setTotalGames] = useState(0);
-  const [rounds, setRounds] = useState(0);
+  // const [totalGames, setTotalGames] = useState(0);
+  // const [rounds, setRounds] = useState(0);
+  const [render, setRender] = useState(0);
 
   function handleCorrectClick() {
     setScore((prev) => prev + 1);
@@ -23,19 +24,21 @@ function App() {
   function resetGame() {
     setScore(0);
     setCardAmount(4);
-    setTotalGames((prev) => prev + 1);
+    // setTotalGames((prev) => prev + 1);
+    setRender((prev) => prev + 1);
   }
 
   function handleRoundWon() {
     setCardAmount((prev) => prev + 4);
-    setRounds((prev) => prev + 1);
+    // setRounds((prev) => prev + 1);
+    setRender((prev) => prev + 1);
   }
 
   return (
     <div className="App">
       <Header />
       <Scoreboard score={score} highscore={highscore} />
-      <Gameboard cardAmount={cardAmount} onRoundWon={handleRoundWon} onCorrect={handleCorrectClick} onGameover={handleGameOver} totalGames={totalGames} rounds={rounds} />
+      <Gameboard cardAmount={cardAmount} onRoundWon={handleRoundWon} onCorrect={handleCorrectClick} onGameover={handleGameOver} render={render} />
     </div>
   );
 }

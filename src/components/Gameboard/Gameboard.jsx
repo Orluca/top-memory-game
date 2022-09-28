@@ -62,7 +62,7 @@ function Gameboard(props) {
   useEffect(() => {
     setCharacters([]);
     generateCharacters(props.cardAmount);
-  }, [props.cardAmount]);
+  }, [props.totalGames, props.rounds]);
 
   useEffect(() => {
     const components = characters.map((data) => <MemoryCard name={data.name} image={data.image} id={data.id} key={data.id} onClick={handleCardClick} />);

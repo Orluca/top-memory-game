@@ -7,6 +7,7 @@ function Gameboard(props) {
   const [cardComponents, setCardComponents] = useState([]);
 
   function createRandomNumber() {
+    // return Math.floor(Math.random() * props.characterAmount) + 1;
     return Math.floor(Math.random() * 826) + 1;
   }
 

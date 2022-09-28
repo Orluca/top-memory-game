@@ -44,8 +44,7 @@ function Gameboard(props) {
   }, [props.cardAmount]);
 
   useEffect(() => {
-    console.log(characters);
-    const components = characters.map((data) => <MemoryCard name={data.name} image={data.image} key={data.id} />);
+    const components = characters.map((data) => <MemoryCard name={data.name} image={data.image} id={data.id} key={data.id} />);
     setCardComponents(components);
   }, [characters]);
 

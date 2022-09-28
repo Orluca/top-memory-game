@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import MemoryCardStyled from "./MemoryCard.styled";
 
 function MemoryCard(props) {
+  const [id, setId] = useState(props.id);
+
+  function handleClick() {
+    props.onClick(id);
+  }
+
   return (
-    <div>
+    <MemoryCardStyled onClick={handleClick}>
       <img src={props.image} alt={`A picture of ${props.name}`} />
       <div className="picture-label">{props.name ? props.name : "..."}</div>
-    </div>
+    </MemoryCardStyled>
   );
 }
 

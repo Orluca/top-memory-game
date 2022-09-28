@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import GameboardStyled from "./Gameboard.styled";
+import MemoryCard from "./MemoryCard/MemoryCard";
 
 function Gameboard(props) {
   const [characters, setCharacters] = useState([]);
+  const [cardComponents, setCardComponents] = useState([]);
 
   function createRandomNumber() {
     return Math.floor(Math.random() * 826) + 1;
@@ -43,17 +45,15 @@ function Gameboard(props) {
 
   useEffect(() => {
     console.log(characters);
+    const components = characters.map((data) => <MemoryCard name={data.name} image={data.image} key={data.id} />);
+    setCardComponents(components);
   }, [characters]);
 
-  function handleClick() {
-    console.log(characters);
-  }
+  // function handleClick() {
+  //   console.log(characters);
+  // }
 
-  return (
-    <GameboardStyled>
-      <button onClick={handleClick}>btn</button>
-    </GameboardStyled>
-  );
+  return <GameboardStyled>{cardComponents}</GameboardStyled>;
 }
 
 export default Gameboard;

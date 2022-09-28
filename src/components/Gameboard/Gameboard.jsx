@@ -50,6 +50,21 @@ function Gameboard(props) {
     return characters.every((char) => char.clicked === true);
   }
 
+  function shuffle(a) {
+    let j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+      j = Math.floor(Math.random() * (i + 1));
+      x = a[i];
+      a[i] = a[j];
+      a[j] = x;
+    }
+    return a;
+  }
+
+  function shuffleCards() {
+    setCharacters((prev) => shuffle(prev));
+  }
+
   function handleCardClick(id) {
     const index = characters.findIndex((char) => char.id === id);
     const clickedCharacter = characters[index];
@@ -62,6 +77,7 @@ function Gameboard(props) {
         prev[index].clicked = true;
         return [...prev];
       });
+      shuffleCards();
       props.onCorrect();
     }
   }

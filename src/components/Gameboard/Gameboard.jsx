@@ -27,7 +27,7 @@ function Gameboard(props) {
     getCharacterData(id).then((data) =>
       setCharacters((prev) => {
         const filteredPrev = prev.filter((char) => char.id !== id);
-        return [...filteredPrev, { name: data.name, id: data.id, image: data.image }];
+        return [...filteredPrev, { name: data.name, id: data.id, image: data.image, clicked: false }];
       })
     );
   }
@@ -38,13 +38,22 @@ function Gameboard(props) {
     randomIds.forEach((id) => createCharacter(id));
   }
 
+  function handleCardClick(id) {
+    setCharacters((prev) => {
+      const index = prev.findIndex((char) => char.id === id);
+      prev[index].clicked = true;
+      return [...prev];
+    });
+  }
+
   useEffect(() => {
     setCharacters([]);
     generateCharacters(props.cardAmount);
   }, [props.cardAmount]);
 
   useEffect(() => {
-    const components = characters.map((data) => <MemoryCard name={data.name} image={data.image} id={data.id} key={data.id} />);
+    console.log(characters);
+    const components = characters.map((data) => <MemoryCard name={data.name} image={data.image} id={data.id} key={data.id} onClick={handleCardClick} />);
     setCardComponents(components);
   }, [characters]);
 

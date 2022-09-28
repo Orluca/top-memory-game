@@ -9,7 +9,7 @@ function MemoryCard(props) {
   }
 
   return (
-    <MemoryCardStyled onClick={handleClick}>
+    <MemoryCardStyled onMouseDown={handleClick}>
       <img src={props.image} alt={`A picture of ${props.name}`} />
       <div className="picture-label">{props.name ? props.name : "..."}</div>
     </MemoryCardStyled>

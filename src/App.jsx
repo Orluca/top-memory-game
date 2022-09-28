@@ -23,11 +23,16 @@ function App() {
     });
   }
 
+  function handleClick() {
+    setCardAmount(8);
+  }
+
   return (
     <div className="App">
       <Header />
       <Scoreboard score={score} highscore={highscore} />
       <Gameboard cardAmount={cardAmount} onCorrect={handleCorrectClick} onGameOver={handleGameOver} />
+      <button onClick={handleClick}>more</button>
     </div>
   );
 }

@@ -1,8 +1,19 @@
 import React, { useEffect, useState } from "react";
 import GameboardStyled from "./Gameboard.styled";
 
-function Gameboard() {
+function Gameboard(props) {
   const [characters, setCharacters] = useState([]);
+
+  function createRandomNumber() {
+    return Math.floor(Math.random() * 826) + 1;
+  }
+
+  function randomNumbers(amount) {
+    const amountNumber = Number(amount);
+    const emptyArray = new Array(amountNumber).fill(NaN);
+    const numbers = emptyArray.map((_el) => createRandomNumber());
+    return numbers;
+  }
 
   async function getCharacterData(id) {
     return fetch(`https://rickandmortyapi.com/api/character/${id}`)
@@ -19,13 +30,20 @@ function Gameboard() {
     );
   }
 
-  function generateCards(amount) {
-    const emptyArray = new Array(amount).fill(NaN);
+  function generateCharacters(amount) {
+    const randomIds = randomNumbers(amount);
+
+    randomIds.forEach((id) => createCharacter(id));
   }
 
   useEffect(() => {
-    createCharacter(1);
-  }, []);
+    setCharacters([]);
+    generateCharacters(props.cardAmount);
+  }, [props.cardAmount]);
+
+  useEffect(() => {
+    console.log(characters);
+  }, [characters]);
 
   function handleClick() {
     console.log(characters);
